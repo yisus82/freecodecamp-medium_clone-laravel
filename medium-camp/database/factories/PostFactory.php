@@ -24,7 +24,7 @@ class PostFactory extends Factory
             'title' => $title,
             'slug' => \Str::slug($title),
             'content' => $this->faker->paragraphs(5, true),
-            'image_path' => $this->faker->optional()->imageUrl(800, 600),
+            'image_path' => "https://placehold.co/600x400/webp?text=$title",
             'category_id' => Category::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
             'published_at' => $this->faker->optional()->dateTimeBetween('-1 years', 'now'),
