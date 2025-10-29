@@ -13,9 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
         $posts = Post::orderByDesc('published_at')->paginate(10);
-        return view('dashboard', compact('categories', 'posts'));
+        return view('dashboard', compact('posts'));
     }
 
     /**
