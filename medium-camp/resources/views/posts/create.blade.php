@@ -2,15 +2,15 @@
     <div class="py-4">
         <div class="bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 mb-8 p-8">
             <h1 class="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Create New Post</h1>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
-                <form action="{{  route('post.store') }}" enctype="multipart/form-data" method="post">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <form action="{{  route('posts.store') }}" enctype="multipart/form-data" method="post">
 
                     @csrf
 
                     <!-- Image Path -->
                     <div>
                         <x-input-label for="image" :value="__('Image')" />
-                        <x-text-input id="image" class="block mt-1 w-full" type="file" name="image_path"
+                        <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"
                             :value="old('image')" autofocus />
                         <x-input-error :messages="$errors->get('image')" class="mt-2" />
                     </div>

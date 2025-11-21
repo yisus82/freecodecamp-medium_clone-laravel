@@ -19,6 +19,12 @@
         </a>
     </div>
     <a href="#">
-        <img class="w-48 h-full object-cover rounded-r-lg" src="{{ $post->image_path }}" alt="{{ $post->title }}" />
+        <!-- If post image starts with http use that in src else use storage url -->
+        @if (Str::startsWith($post->image, 'http'))
+            <img class="w-48 h-full object-cover rounded-r-lg" src="{{ $post->image }}" alt="{{ $post->title }}" />
+        @else
+            <img class="w-48 h-full object-cover rounded-r-lg" src="{{ Storage::url($post->image) }}"
+                alt="{{ $post->title }}" />
+        @endif
     </a>
 </div>
