@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,5 +49,14 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function avatarUrl()
+    {
+        // If user image starts with http return that else use storage url or return default avatar from image assets
+        if (str_starts_with($this->image, 'http')) {
+            return $this->image;
+        }
+        return $this->image ? \Illuminate\Support\Facades\Storage::url($this->image) : asset('images/default-avatar.png');
     }
 }
