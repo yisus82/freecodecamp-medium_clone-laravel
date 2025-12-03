@@ -57,6 +57,11 @@ class User extends Authenticatable implements MustVerifyEmail
         if (str_starts_with($this->image, 'http')) {
             return $this->image;
         }
-        return $this->image ? \Illuminate\Support\Facades\Storage::url($this->image) : asset('images/default-avatar.png');
+        return $this->image ? \Illuminate\Support\Facades\Storage::url($this->image) : asset('images/default-avatar.jpg');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

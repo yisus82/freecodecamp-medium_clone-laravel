@@ -4,13 +4,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                 <h1 class="text-2xl mb-4">{{ $post->title }}</h1>
 
-                <!-- User Avatar -->
+                <!-- Author Section -->
                 <div class="flex gap-4">
-                    <img class="w-12 h-12 rounded-full object-cover" src="{{ $post->user->avatarUrl() }}"
-                        alt="{{ $post->user->name }}" />
+                    <x-avatar :user="$post->user" />
                     <div>
                         <div class="flex gap-2">
-                            <p class="font-semibold">{{ $post->user->name }}</p>
+                            <a href="{{ route('public_profile.show', $post->user) }}">
+                                <p class="font-semibold">{{ $post->user->name }}</p>
+                            </a>
                             <span class="font-semibold">•</span>
                             <a href="#" class="text-emerald-500">Follow</a>
                         </div>

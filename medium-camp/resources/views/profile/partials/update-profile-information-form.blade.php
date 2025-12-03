@@ -17,7 +17,7 @@
         @csrf
         @method('patch')
 
-        <img class="rounded-full h-20 w-20" src="{{ $user->avatarUrl() }}" alt="{{ $user->username }}" />
+        <img class="rounded-full w-20 h-20" src="{{ $user->avatarUrl() }}" alt="{{ $user->username }}" />
 
         <div>
             <x-input-label for="image" :value="__('Avatar')" />
