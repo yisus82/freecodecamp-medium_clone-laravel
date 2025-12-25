@@ -16,12 +16,12 @@
                             @endforelse
                         </div>
                     </div>
-                    <div class="w-64 flex-shrink-0 p-4">
+                    <x-follow-ctr :user="$user">
                         <div class="flex gap-2">
                             <x-avatar :user="$user" size="w-24" />
                             <div class="flex flex-col gap-4">
                                 <p class="text-white">{{ $user->name }} ({{ "@" . $user->username }})</p>
-                                <p class="text-sm text-gray-500">26K followers</p>
+                                <p class="text-sm text-gray-500"><span x-text="followersCount"></span> followers</p>
                             </div>
                         </div>
                         <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mt-8">
@@ -30,12 +30,14 @@
                                 {{ $user->bio ?? 'This user has not added a bio yet.' }}
                             </p>
                         </div>
-                        <div class="mt-4 mx-auto w-20">
-                            <button class="rounded-full px-4 py-2 text-white bg-emerald-600">
-                                Follow
-                            </button>
-                        </div>
-                    </div>
+                        @if (auth()->user() && auth()->user()->id !== $user->id)
+                            <div class="mt-4">
+                                <button @click="follow()" class="rounded-full px-4 py-2 text-white"
+                                    x-text="following ? 'Unfollow' : 'Follow'"
+                                    :class="following ? 'bg-red-600' : 'bg-emerald-600'"></button>
+                            </div>
+                        @endif
+                    </x-follow-ctr>
                 </div>
             </div>
         </div>
