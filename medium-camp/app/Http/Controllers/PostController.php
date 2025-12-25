@@ -16,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderByDesc('published_at')->paginate(10);
+        $posts = Post::where('published_at', '<=', now())
+            ->orderByDesc('published_at')
+            ->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -115,6 +117,7 @@ class PostController extends Controller
     public function byCategory(Category $category)
     {
         $posts = Post::where('category_id', $category->id)
+            ->where('published_at', '<=', now())
             ->orderByDesc('published_at')
             ->paginate(10);
 

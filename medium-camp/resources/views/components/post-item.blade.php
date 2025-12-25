@@ -15,7 +15,7 @@
                 {{ $post->user->name }}
             </a>
             <span>
-                at {{ $post->published_at->format('F j, Y, g:i a') }}
+                at {{ $post->published_at->format('F j, Y, g:i a') }} UTC
             </span>
         </div>
         <p class="my-3 font-normal text-gray-700 dark:text-gray-400">

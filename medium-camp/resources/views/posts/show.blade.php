@@ -22,7 +22,7 @@
                         <div class="flex gap-2 text-sm text-gray-500">
                             {{ $post->readTime() }} min. read
                             <span class="font-semibold">•</span>
-                            {{ $post->published_at ? $post->published_at->format('F j, Y, g:i a') : 'Unpublished' }}
+                            {{ $post->published_at ? $post->published_at->format('F j, Y, g:i a') . ' UTC' : 'Unpublished' }}
                         </div>
                     </div>
                 </div>
