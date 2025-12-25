@@ -27,6 +27,24 @@
                     </div>
                 </div>
 
+                <!-- Edit/Delete Section -->
+                @if ($post->user_id === Auth::id())
+                    <div class="py-4 mt-8 border-t border-b border-gray-200 flex gap-2 justify-around">
+                        <x-primary-button>
+                            <a href="{{ route('posts.edit', $post->slug) }}">
+                                Edit Post
+                            </a>
+                        </x-primary-button>
+                        <form class="inline-block" action="{{ route('posts.destroy', $post->slug) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <x-danger-button>
+                                Delete Post
+                            </x-danger-button>
+                        </form>
+                    </div>
+                @endif
+
                 <!-- Interaction Section -->
                 <x-interaction-section :post="$post" />
 
