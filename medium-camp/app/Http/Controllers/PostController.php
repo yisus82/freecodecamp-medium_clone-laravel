@@ -77,4 +77,16 @@ class PostController extends Controller
     {
         //
     }
+
+    /**
+     * Display a listing of posts by category.
+     */
+    public function byCategory(Category $category)
+    {
+        $posts = Post::where('category_id', $category->id)
+            ->orderByDesc('published_at')
+            ->paginate(10);
+
+        return view('posts.index', compact('posts', 'category'));
+    }
 }

@@ -19,6 +19,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/@{username}/{post:slug}', [PostController::class, 'show'])->name('posts.show');
     Route::post('/follow/@{user:username}', [FollowerController::class, 'followUnfollow'])->name('follow');
     Route::post('/clap/{post:slug}', [ClapController::class, 'clap'])->name('clap');
+    Route::get('/posts/category/{category}', [PostController::class, 'byCategory'])->name('posts.byCategory');
 });
 
 Route::middleware('auth')->group(function () {
