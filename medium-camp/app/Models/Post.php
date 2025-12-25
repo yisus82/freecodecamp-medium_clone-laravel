@@ -50,4 +50,9 @@ class Post extends Model
 
         return max(1, $minutes);
     }
+
+    public function claps()
+    {
+        return $this->hasMany(Clap::class);
+    }
 }

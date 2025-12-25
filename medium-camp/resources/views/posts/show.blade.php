@@ -46,9 +46,6 @@
                         {{ $post->category->name }}
                     </span>
                 </div>
-
-                <!-- Interaction Section -->
-                <x-interaction-section :post="$post" />
             </div>
         </div>
     </div>
