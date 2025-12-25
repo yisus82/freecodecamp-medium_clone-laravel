@@ -6,7 +6,19 @@
                 {{ $post->title }}
             </h5>
         </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <div class="text-sm text-gray-400 flex gap-2">
+            <span>
+                by
+            </span>
+            <a href="{{ route('public_profile.show', $post->user->username) }}"
+                class="text-gray-900 dark:text-white hover:underline">
+                {{ $post->user->name }}
+            </a>
+            <span>
+                at {{ $post->published_at->format('F j, Y, g:i a') }}
+            </span>
+        </div>
+        <p class="my-3 font-normal text-gray-700 dark:text-gray-400">
             {{ Str::limit($post->content, preserveWords: true) }}
         </p>
         <a href="{{ route('posts.show', ['username' => $post->user->username, 'post' => $post]) }}"
